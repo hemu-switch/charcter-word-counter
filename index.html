@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Task</title>
+</head>
+<style>
+
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .container{
+        margin: 0px auto;
+        width: 50%;
+        
+        padding: 10px;
+    }
+    h1{
+        text-align: center;
+        color: blue;
+        font-size: 3em;
+        margin-top: 10px;
+    }
+    hr{
+        width: 70%;
+        margin: 0px auto;
+        border-top: 2px dashed red;
+    }
+
+    .text{
+        
+        height: 326px;
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 10px;
+        
+    }
+    .characters{
+        text-align: right;
+    }
+    label{
+        font-size: xx-large;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .no_char{
+       border-radius: 10px;
+       margin: 8px 0;
+       padding: 12px 20px;
+       
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>This is my Word counter</h1>
+    </div>
+    <hr>
+    <div class="container">
+        <label for="no_words"> Enter number of words</label>
+        <input type="text" class="no_char" id="no_words">
+    </div>
+        
+    <div class="container">
+        <label for="myText">Please fill out the form</label>
+        <textarea placeholder="Enter the text here..." class="text" id="myText" ></textarea>
+        <div class="characters" id="remainingChars">
+            characters remaining
+        </div>
+    </div>
+        
+    
+</body>
+
+<script>
+
+
+    var user_val=document.getElementById('no_words');
+
+    const myTextArea = document.getElementById('myText');
+    const remainingCharsText = document.getElementById('remainingChars');
+
+    
+    let max_chars;
+
+    user_val.addEventListener('input',function(){
+         max_chars=user_val.value;
+         //console.log(max_chars);
+         remainingCharsText.textContent = `${max_chars} characters remaining`;
+    });
+    
+    
+    
+    myTextArea.addEventListener('input',()=>{
+
+        const remaining = max_chars - myTextArea.value.length;
+
+        
+
+        remainingCharsText.textContent = `${remaining} characters remaining`;
+       
+        if(remaining>0){
+            
+            
+            if(remaining < 25 ){
+                remainingCharsText.style.color='red';
+            }
+            else{
+                remainingCharsText.style.color= 'black';
+            }
+        }
+        
+        
+
+     
+    });
+
+</script>
+
+</html>
